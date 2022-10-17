@@ -1,5 +1,8 @@
 import Foundation
 import RxSwift
+import RxCocoa
+import UIKit
+import PlaygroundSupport
 
 let bag = DisposeBag()
 
@@ -53,7 +56,9 @@ sleep(1)
 
 count.onNext(3)
 */
+
 print("-WINDOW-")
+/*
 let 카운트 = PublishSubject<String>()
 카운트
     .window(timeSpan: .seconds(2), count: 3, scheduler: MainScheduler.instance)
@@ -73,3 +78,78 @@ let 카운트 = PublishSubject<String>()
 sleep(2)
 카운트.onNext("네번째")
 카운트.onNext("다번째")
+*/
+
+print("-DELAY SUBSCRIPTION-")
+/*
+let 지연 = PublishSubject<Int>()
+
+지연
+    .delaySubscription(.seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: bag)
+
+지연.onNext(1)
+지연.onNext(2)
+sleep(2)
+지연.onNext(3)
+지연.onNext(4)
+*/
+
+print("-DELAY-")
+/*
+let delay = PublishSubject<Int>()
+delay
+    .delay(.seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: bag)
+
+delay.onNext(1)
+delay.onNext(2)
+sleep(2)
+delay.onNext(3)
+*/
+
+print("-INTERVAL-")
+/*
+Observable<Int>
+    .interval(.seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: bag)
+*/
+
+Observable<Int>
+    .interval(.seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: bag)
+
+print("-TIMER-")
+/*
+Observable<Int>
+    .timer(.seconds(4), period: .seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: {
+        print($0)
+    })
+    .disposed(by: bag)
+*/
+
+print("-TIME OUT-")
+let 폭탄 = PublishSubject<String>()
+
+폭탄
+    .timeout(.seconds(1), other: Observable<String>.just("폭탄이 터졌습니다."), scheduler: MainScheduler.instance)
+    .subscribe{
+        print($0)
+    }
+    .disposed(by: bag)
+
+폭탄.onNext("터지지마 제발")
+폭탄.onNext("터지지마 제발")
