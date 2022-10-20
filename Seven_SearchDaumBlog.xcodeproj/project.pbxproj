@@ -18,6 +18,8 @@
 		D4B18998290004870097B4BA /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B18997290004860097B4BA /* FilterView.swift */; };
 		D4B1899A290007160097B4BA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B18999290007150097B4BA /* TableViewCell.swift */; };
 		D4B1899C2900073D0097B4BA /* BlogDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1899B2900073D0097B4BA /* BlogDataModel.swift */; };
+		D4B189A0290146BD0097B4BA /* BlogTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1899F290146BC0097B4BA /* BlogTableView.swift */; };
+		D4B189A629014CA40097B4BA /* AlertActionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B189A529014CA40097B4BA /* AlertActionConvertible.swift */; };
 		D4D3B9B128F57E7400C70AFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D3B9B028F57E7400C70AFB /* AppDelegate.swift */; };
 		D4D3B9B328F57E7400C70AFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D3B9B228F57E7400C70AFB /* SceneDelegate.swift */; };
 		D4D3B9BA28F57E7700C70AFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D3B9B928F57E7700C70AFB /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		D4B18997290004860097B4BA /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		D4B18999290007150097B4BA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		D4B1899B2900073D0097B4BA /* BlogDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDataModel.swift; sourceTree = "<group>"; };
+		D4B1899F290146BC0097B4BA /* BlogTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTableView.swift; sourceTree = "<group>"; };
+		D4B189A529014CA40097B4BA /* AlertActionConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionConvertible.swift; sourceTree = "<group>"; };
 		D4D3B9AD28F57E7400C70AFB /* Seven_SearchDaumBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seven_SearchDaumBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D3B9B028F57E7400C70AFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4D3B9B228F57E7400C70AFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,9 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B1899328FFF8720097B4BA /* MainVC.swift */,
-				D4B1899528FFFA070097B4BA /* SearchBarView.swift */,
-				D4B18997290004860097B4BA /* FilterView.swift */,
-				D4B18999290007150097B4BA /* TableViewCell.swift */,
+				D4B189A1290149F40097B4BA /* SubComponents */,
 			);
 			path = MainScene;
 			sourceTree = "<group>";
@@ -70,8 +72,44 @@
 			isa = PBXGroup;
 			children = (
 				D4B1899B2900073D0097B4BA /* BlogDataModel.swift */,
+				D4B189A529014CA40097B4BA /* AlertActionConvertible.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D4B189A1290149F40097B4BA /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D4B189A229014A2A0097B4BA /* SearchBar */,
+				D4B189A329014A380097B4BA /* BlogTableView */,
+			);
+			path = SubComponents;
+			sourceTree = "<group>";
+		};
+		D4B189A229014A2A0097B4BA /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				D4B1899528FFFA070097B4BA /* SearchBarView.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		D4B189A329014A380097B4BA /* BlogTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D4B1899F290146BC0097B4BA /* BlogTableView.swift */,
+				D4B189A429014A4D0097B4BA /* SubComponents */,
+			);
+			path = BlogTableView;
+			sourceTree = "<group>";
+		};
+		D4B189A429014A4D0097B4BA /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D4B18997290004860097B4BA /* FilterView.swift */,
+				D4B18999290007150097B4BA /* TableViewCell.swift */,
+			);
+			path = SubComponents;
 			sourceTree = "<group>";
 		};
 		D4D3B9A428F57E7400C70AFB = {
@@ -193,8 +231,10 @@
 				D4D3B9B128F57E7400C70AFB /* AppDelegate.swift in Sources */,
 				D4B1899428FFF8720097B4BA /* MainVC.swift in Sources */,
 				D4B1899A290007160097B4BA /* TableViewCell.swift in Sources */,
+				D4B189A0290146BD0097B4BA /* BlogTableView.swift in Sources */,
 				D4B18998290004870097B4BA /* FilterView.swift in Sources */,
 				D4D3B9B328F57E7400C70AFB /* SceneDelegate.swift in Sources */,
+				D4B189A629014CA40097B4BA /* AlertActionConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +380,6 @@
 				INFOPLIST_FILE = Seven_SearchDaumBlog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -368,7 +407,6 @@
 				INFOPLIST_FILE = Seven_SearchDaumBlog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

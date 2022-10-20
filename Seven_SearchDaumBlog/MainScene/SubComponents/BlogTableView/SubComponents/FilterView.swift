@@ -16,7 +16,8 @@ class FilterView : UITableViewHeaderFooterView{
     let bag = DisposeBag()
     
     let sortBtn = UIButton().then{
-        $0.setImage(UIImage(named: "list.bullet"), for: .normal)
+        $0.setTitle("필터", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
     }
     
     let border = UIView().then{
@@ -51,13 +52,12 @@ class FilterView : UITableViewHeaderFooterView{
             }
         
         self.sortBtn.snp.makeConstraints{
-            $0.trailing.equalToSuperview().inset(10)
+            $0.size.equalTo(45)
+            $0.trailing.equalToSuperview().inset(5)
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(25)
         }
         self.border.snp.makeConstraints{
             $0.leading.bottom.trailing.equalToSuperview()
-            $0.top.equalTo(self.sortBtn.snp.bottom)
             $0.height.equalTo(0.5)
         }
     }
