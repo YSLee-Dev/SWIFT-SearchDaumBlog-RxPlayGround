@@ -44,7 +44,6 @@ class BlogTableView : UITableView{
                 return cell
             }
             .disposed(by: bag)
-        
     }
     
     private func attribute(){
