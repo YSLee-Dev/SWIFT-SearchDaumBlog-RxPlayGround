@@ -24,13 +24,9 @@ class FilterView : UITableViewHeaderFooterView{
         $0.backgroundColor = .gray
     }
     
-    // 외부에서 관찰하는 옵저버블
-    var sortBtnClick = PublishRelay<Void>()
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        self.bind()
         self.layout()
     }
     
@@ -38,9 +34,9 @@ class FilterView : UITableViewHeaderFooterView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func bind(){
+    func bind(viewModel : FilterViewModel){
         self.sortBtn.rx.tap
-            .bind(to: sortBtnClick)
+            .bind(to: viewModel.sortBtnClick)
             .disposed(by: bag)
             
     }

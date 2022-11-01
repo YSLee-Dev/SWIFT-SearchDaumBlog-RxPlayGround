@@ -20,12 +20,8 @@ class BlogTableView : UITableView{
         )
     )
     
-    // 부모뷰(MainVC) 네트워크 작업 -> BlogTableView
-    let cellData = PublishSubject<[BlogDataModel]>()
-    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        self.bind()
         self.attribute()
     }
     
@@ -33,9 +29,9 @@ class BlogTableView : UITableView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func bind(){
-        self.cellData
-            .asDriver(onErrorJustReturn: [])
+    func bind(viewModel : BlogTableViewModel){
+        self.header.bind(viewModel: viewModel.filterViewModel)
+        viewModel.cellData
             .drive(self.rx.items){ tv, row, data in
                 let index = IndexPath(row: row, section: 0)
                 let cell = tv.dequeueReusableCell(withIdentifier: "TableViewCell", for: index) as! TableViewCell

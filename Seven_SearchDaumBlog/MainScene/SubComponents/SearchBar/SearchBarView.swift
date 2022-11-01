@@ -19,15 +19,8 @@ class SearchBarView : UISearchBar{
         $0.setTitleColor(.systemBlue, for: .normal)
     }
     
-    // SearchBar btn tap 이벤트
-    let btnClick = PublishRelay<Void>()
-    
-    // SearchBar 외부로 내보낼 이벤트
-    var shouldLoadResult = Observable<String>.of("")
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.bind()
         self.layout()
     }
     
@@ -35,26 +28,24 @@ class SearchBarView : UISearchBar{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func bind(){
+    func bind(viewModel : SearchBarViewModel){
+        self.rx.text
+            .bind(to: viewModel.tfText)
+            .disposed(by: self.bag)
+        
         // btn이 눌렸을 때, 키보드의 서치버튼을 눌렀을 때
         Observable
             .merge(
                 self.rx.searchButtonClicked.asObservable(),
                 self.btn.rx.tap.asObservable()
             )
-            .bind(to: self.btnClick)
+            .bind(to: viewModel.btnClick)
             .disposed(by: bag)
         
-        self.btnClick
+        viewModel.btnClick
             .asSignal()
             .emit(to: self.rx.endEditing)
             .disposed(by: bag)
-
-        
-        self.shouldLoadResult = btnClick
-            .withLatestFrom(self.rx.text){$1 ?? ""}
-            .filter{!$0.isEmpty}
-            .distinctUntilChanged()
     }
     
     
